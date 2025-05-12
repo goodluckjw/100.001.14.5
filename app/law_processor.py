@@ -67,6 +67,10 @@ def build_amendment(law_name, amendments, idx):
     prefix = chr(9312 + idx) if idx < 20 else f'({idx + 1})'
     return f'{prefix} {law_name} 일부를 다음과 같이 개정한다.\n' + '\n'.join(parts)
 
+def run_amendment_logic(law_name, amendments_dict, idx=0):
+    return build_amendment(law_name, amendments_dict, idx)
+
+
 # Example Usage
 if __name__ == "__main__":
     amendments_example = {
