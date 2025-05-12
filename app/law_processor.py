@@ -26,4 +26,12 @@ def apply_josa_rule(orig_chunk, replace_chunk, josa):
                 return f'“{orig_chunk}”을 “{replace_chunk}”으로 한다.'
 
     rules = {
-        "을": lambda: f'“{orig_chunk}”을 “{replace_chunk}”{"로" if b_has_rieul else "으로"} 한다.' if b_has_batchim else f'“{orig_chunk
+        "을": lambda: f'“{orig_chunk}”을 “{replace_chunk}”{"로" if b_has_rieul else "으로"} 한다.' if b_has_batchim else f'“{orig_chunk}을”을 “{replace_chunk}를”로 한다.',
+        "를": lambda: f'“{orig_chunk}를”을 “{replace_chunk}을”로 한다.' if b_has_batchim else f'“{orig_chunk}”를 “{replace_chunk}”로 한다.',
+        # 여기에 나머지 조사 규칙을 채우세요...
+    }
+
+    return rules.get(josa, lambda: f'“{orig_chunk}”를 “{replace_chunk}”로 한다.')()
+
+                                                                                                                      
+                                                                                                                      
